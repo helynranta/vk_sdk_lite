@@ -1,0 +1,20 @@
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'SDK version'     
+        required: true
+
+jobs:
+  build:
+    name: download Vulkan SDK $(version)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - shell: pwsh
+        run: |
+          $url = "https://sdk.lunarg.com/sdk/download/$($version)/windows/VulkanSDK-$($version)-Installer.exe"
+          Write-Host downloading from $url
+          Invike-WebRequest $url -OutFile installer.exe
+          installer.exe --root ./install --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
