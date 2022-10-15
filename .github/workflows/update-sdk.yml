@@ -8,6 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - shell: bash
+        run: git config --global http.version HTTP/1.1
+
       - shell: pwsh
         run: |
           Get-ChildItem -Directory -Exclude .* . | Remove-Item -Recurse -Force
@@ -23,5 +26,5 @@ jobs:
           Copy-Item -Path D:\VulkanSDK\Include -Destination ./Include -Recurse
           Copy-Item -Path D:\VulkanSDK\Lib -Destination ./Lib -Recurse
           Copy-Item -Path D:\VulkanSDK\share -Destination ./share -Recurse
-
+      
       - uses: stefanzweifel/git-auto-commit-action@v4
