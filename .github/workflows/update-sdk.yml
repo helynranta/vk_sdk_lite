@@ -15,5 +15,5 @@ jobs:
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest -Uri "https://sdk.lunarg.com/sdk/download/$ver/windows/VulkanSDK-$ver-Installer.exe" -OutFile VulkanSDK.exe
           echo Downloaded
-          .\VulkanSDK.exe --root ./install --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
+          .\VulkanSDK.exe --root D:\VulkanSDK --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
           Get-ChildItem
