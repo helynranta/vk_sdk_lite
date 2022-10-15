@@ -17,5 +17,6 @@ jobs:
           $version = "${{ github.event.inputs.version}}"
           $url = "https://sdk.lunarg.com/sdk/download/$($version)/windows/VulkanSDK-$($version)-Installer.exe"
           Write-Host downloading from $url
-          Invoke-WebRequest $url -OutFile installer.exe
+          Invoke-WebRequest -Uri $url -OutFile installer.exe
           installer.exe --root ./install --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
+          Get-ChildItem()
