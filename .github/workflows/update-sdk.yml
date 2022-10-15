@@ -24,7 +24,4 @@ jobs:
           Copy-Item -Path D:\VulkanSDK\Lib -Destination ./Lib -Recurse
           Copy-Item -Path D:\VulkanSDK\share -Destination ./share -Recurse
 
-      - uses: EndBug/add-and-commit@v9
-        with:
-          message: 'updated to latest VulkanSDK'
-        
+      - uses: stefanzweifel/git-auto-commit-action@v4
