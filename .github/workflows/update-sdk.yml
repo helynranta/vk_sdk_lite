@@ -16,4 +16,4 @@ jobs:
           Invoke-WebRequest -Uri "https://sdk.lunarg.com/sdk/download/$ver/windows/VulkanSDK-$ver-Installer.exe" -OutFile VulkanSDK.exe
           echo Downloaded
           .\VulkanSDK.exe --root D:\VulkanSDK --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
-          Get-ChildItem
+          Get-ChildItem D:\VulkanSDK
