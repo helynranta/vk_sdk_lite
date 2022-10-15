@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: download Vulkan SDK $(version)
+    name: download Vulkan SDK ${{ github.event.inputs.version }}
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,4 +19,4 @@ jobs:
           Write-Host downloading from $url
           Invoke-WebRequest -Uri $url -OutFile installer.exe
           installer.exe --root ./install --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
-          Get-ChildItem()
+          Get-ChildItem
