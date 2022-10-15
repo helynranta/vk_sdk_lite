@@ -10,7 +10,7 @@ jobs:
       
       - shell: pwsh
         run: |
-          Get-ChildItem -Directory -Exclude .* . | Remove-Item
+          Get-ChildItem -Directory -Exclude .* . | Remove-Item -Recurse -Force
           $ver = (Invoke-WebRequest -Uri "https://vulkan.lunarg.com/sdk/latest.json" | ConvertFrom-Json).windows
           echo Version $ver
           $ProgressPreference = 'SilentlyContinue'
