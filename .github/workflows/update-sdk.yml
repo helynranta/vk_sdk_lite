@@ -20,6 +20,6 @@ jobs:
           Get-ChildItem D:\VulkanSDK
           Copy-Item -Path D:\VulkanSDK\Bin -Destination ./Bin -Recurse
           Copy-Item -Path D:\VulkanSDK\Config -Destination ./Config -Recurse
-          Copy-Item -Path D:\VulkanSDK\include -Destination ./include -Recurse
+          Copy-Item -Path D:\VulkanSDK\Include -Destination ./Include -Recurse
           Copy-Item -Path D:\VulkanSDK\Lib -Destination ./Lib -Recurse
           Copy-Item -Path D:\VulkanSDK\share -Destination ./share -Recurse
