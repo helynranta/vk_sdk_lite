@@ -1,22 +1,19 @@
 on: 
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'SDK version'     
-        required: true
+  workflow_dispatch
 
 jobs:
   build:
-    name: download Vulkan SDK ${{ github.event.inputs.version }}
+    name: download Vulkan SDK
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
       
       - shell: pwsh
         run: |
-          $version = "${{ github.event.inputs.version}}"
-          $url = "https://sdk.lunarg.com/sdk/download/$($version)/windows/VulkanSDK-$($version)-Installer.exe"
-          Write-Host downloading from $url
-          Invoke-WebRequest -Uri $url -OutFile installer.exe
-          installer.exe --root ./install --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
+          $ver = (Invoke-WebRequest -Uri "https://vulkan.lunarg.com/sdk/latest.json" | ConvertFrom-Json).windows
+          echo Version $ver
+          $ProgressPreference = 'SilentlyContinue'
+          Invoke-WebRequest -Uri "https://sdk.lunarg.com/sdk/download/$ver/windows/VulkanSDK-$ver-Installer.exe" -OutFile VulkanSDK.exe
+          echo Downloaded
+          .\VulkanSDK.exe --root ./install --accept-licenses --default-answer --confirm-command install com.lunarg.vulkan.debug  
           Get-ChildItem
