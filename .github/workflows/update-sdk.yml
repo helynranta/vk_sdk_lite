@@ -30,6 +30,7 @@ jobs:
           Copy-Item -Path D:\VulkanSDK\Include -Destination ./Include -Recurse
           Copy-Item -Path D:\VulkanSDK\Lib -Destination ./Lib -Recurse
           Copy-Item -Path D:\VulkanSDK\share -Destination ./share -Recurse
-          Get-ChildItem . -Recurse -Filter *.pdb | Remove-Item -WhatIf
+          Get-ChildItem . -Recurse -Filter *.pdb | Remove-Item
+          Get-ChildItem . -Recurse -Filter *.exe | Remove-Item
       
       - uses: stefanzweifel/git-auto-commit-action@v4
